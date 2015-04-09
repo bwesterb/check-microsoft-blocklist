@@ -26,8 +26,10 @@ def main():
 
         # Check for changes
         changes = []
-        for ip_from, ip_until, blocked, reason in \
-                csv.reader(raw_csv):
+        for row in csv.reader(raw_csv):
+            if len(row) != 4:
+                continue
+            ip_from, ip_until, blocked, reason = row
             if ip_from == ip_until:
                 key = ip_from
             else:
