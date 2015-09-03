@@ -4,6 +4,7 @@ import yaml
 import os.path
 import urllib
 import json
+import time
 import csv
 
 def main():
@@ -12,7 +13,17 @@ def main():
         settings = yaml.load(f)
 
     # Fetch spam status
-    raw_csv = urllib.urlopen(settings['url'].strip())
+    tries = 0
+    while True:
+        try:
+            raw_csv = urllib.urlopen(settings['url'].strip())
+        except IOError:
+            tries += 1
+            time.sleep(2 ** tries)
+            if tries > 3:
+                raise
+            continue
+        break
 
     with lockfile.FileLock('state.json'):
         # Load state
