@@ -25,6 +25,7 @@ def main():
             state = {}
 
         # Check for changes
+        seen = set()
         changes = []
         for row in csv.reader(raw_csv):
             if len(row) != 4:
@@ -34,11 +35,21 @@ def main():
                 key = ip_from
             else:
                 key = ip_from + '-' + ip_until
+            seen.add(key)
             value = [blocked, reason]
             if key in state and state[key] == value:
                 continue
             changes.append((key, value))
             state[key] = value
+
+        for key in state:
+            if key in seen:
+                continue
+            value = [False, '']
+            if state[key] == value:
+                continue
+            state[key] = value
+            changes.append((key, value))
 
         # Save changes
         if not changes:
