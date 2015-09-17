@@ -20,7 +20,7 @@ def main():
         except IOError:
             tries += 1
             time.sleep(2 ** tries)
-            if tries > 3:
+            if tries > 5:
                 raise
             continue
         break
