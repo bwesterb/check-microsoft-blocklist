@@ -18,8 +18,9 @@ Add an entry in crontab like
     */10 * * * * cd path-to/check-microsoft-blocklist && python check.py
 
 Delist IP
-=========
+---------
 
 Some links that might be helpful
 
- - https://support.microsoft.com/en-us/getsupport?oaspworkflow=start_1.0.0.0&wfname=capsub&productkey=edfsmsbl3&locale=en-us&ccsid=635898642477987940
+ - [Microsoft Support Request Delist Form](https://support.microsoft.com/en-us/getsupport?oaspworkflow=start_1.0.0.0&wfname=capsub&productkey=edfsmsbl3&locale=en-us)
+ - [Comic Relief](http://cdn.meme.am/instances/500x/64726785.jpg)
